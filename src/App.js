@@ -1,25 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+//components
+import SearchPannel from "./SearchPannel";
+import RsvpdEvents from "./RsvpdEvents";
+
+//dynamic api url
+import API_URL from "./config";
 
 class App extends Component {
+  state = {
+    searchResults: [],
+    rsvpdEvents: []
+  };
+
+  searchForArtist = e => {
+    let query = e.target[0].value;
+    let url = `${API_URL}/artists/search?artist_name=${query}`
+
+    fetch(url)
+      .then(r => r.json())
+      .then(r => console.log(r));
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <SearchPannel searchForArtist={this.searchForArtist} />
+        <RsvpdEvents />
       </div>
     );
   }
