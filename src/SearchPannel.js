@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ArtistCard from "./ArtistCard"
+
 export default function SearchPannel(props) {
 
   const artistFormSubmitHandler = (e) => {
@@ -18,8 +20,8 @@ export default function SearchPannel(props) {
       </form>
       <h4>Search Pannel</h4>
       <div className="search-results">
-      {console.log(props.searchResults)}
-     {props.searchResults.map( r => <p key={r.id}>{r.name}</p>)}
+
+     {props.searchResults.map( r => <ArtistCard selectArtist={props.selectArtist} key={r.id} artist={r}/>)}
     
       </div>
     </div>
