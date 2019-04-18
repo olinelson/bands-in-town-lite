@@ -9,6 +9,7 @@ export default function SearchPannel(props) {
 
 
   return (
+
     <div className="search-pannel">
       <form onSubmit={artistFormSubmitHandler}>
           <label>Search For Artist</label>
@@ -17,6 +18,8 @@ export default function SearchPannel(props) {
       </form>
       <h4>Search Pannel</h4>
       <div className="search-results">
+      {console.log(props.searchResults)}
+     {props.searchResults.map( r => <p key={r.id}>{r.name}</p>)}
     
       </div>
     </div>

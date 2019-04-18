@@ -21,13 +21,14 @@ class App extends Component {
 
     fetch(url)
       .then(r => r.json())
-      .then(r => console.log(r));
+      .then(r => this.setState({searchResults: [r]}))
+
   };
 
   render() {
     return (
       <div className="App">
-        <SearchPannel searchForArtist={this.searchForArtist} />
+        <SearchPannel searchForArtist={this.searchForArtist} searchResults={this.state.searchResults} />
         <RsvpdEvents />
       </div>
     );
