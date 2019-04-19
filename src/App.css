@@ -2,6 +2,22 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   height: 100vh;
+  background-color: white;
+  background-color: #EDEDED;
+
+}
+
+button {
+background-color: white;
+border: 1px solid #00B4B3;
+border-radius: 1px;
+color: #46A8A7;
+padding: .25rem;
+font-weight: bold;
+}
+
+input {
+  border-bottom: 1px solid white;
 }
 
 .search-pannel {
@@ -11,9 +27,58 @@
 #leaflet-map { 
   height: 15rem; ;
   width: 25rem;
- 
 }
 
 .event-card {
-  border: 1px solid red;
+
 }
+
+.events {
+  border: 1px solid red;
+  overflow-x: scroll;
+}
+
+h4 {
+  font-size: 2rem;
+}
+a {
+  font-weight: bold;
+  color: #00B4B3;
+}
+
+.search-bar {
+  width: 100%;
+  border: 1px solid red;
+  height: 4rem;
+  background-color: #FFFFFF;
+  display: grid;
+}
+.search-bar input {
+  border: 1px solid #CDCDCD;
+  width: 90%;
+  height: 60%;
+  justify-self: center;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.search-pannel {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  justify-items: center;
+}
+
+.artist-card {
+
+  width: 90%;
+  background-color: white;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+.artist-card img {
+  width: 100%;
+  height: auto;
+}
+

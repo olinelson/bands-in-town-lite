@@ -5,7 +5,7 @@ import EventCard from "./EventCard";
 
 export default function Events(props) {
   return (
-    <div>
+    <div className="events">
       <h4>Events for {props.selectedArtist.name}</h4>
       {props.selectedArtistEvents.map(e => (
         <EventCard
