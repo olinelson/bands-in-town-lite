@@ -23,9 +23,13 @@ class App extends Component {
   };
 
   rsvpToEvent = event => {
-
     this.setState({rsvpdEvents: [...this.state.rsvpdEvents, event]})
+  }
 
+  unRsvp = event => {
+    let oldRsvpdEvents = [...this.state.rsvpdEvents]
+    let result = oldRsvpdEvents.filter( e => e.id !== event.id)
+    this.setState({rsvpdEvents: result})
   }
 
   getUpcomingArtistEvents = artistName => {
@@ -54,7 +58,7 @@ class App extends Component {
           searchForArtist={this.searchForArtist}
           searchResults={this.state.searchResults}
         />
-        <RsvpdEvents rsvpdEvents={this.state.rsvpdEvents} />
+        <RsvpdEvents unRsvp={this.unRsvp} rsvpdEvents={this.state.rsvpdEvents} />
         <Events rsvpToEvent={this.rsvpToEvent} selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
       </div>
     );
