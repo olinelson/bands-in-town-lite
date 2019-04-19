@@ -6,20 +6,36 @@ import MapComponent from "./MapComponent";
 const uuidv1 = require("uuid/v1");
 
 export default class EventCard extends Component {
+  constructor(props) {
+    super();
 
-  constructor (props){
-    super()
+    let eventDate = new Date(props.event.datetime);
     this.state = {
-      rsvpd: false
-    }
+      rsvpd: this.isRsvpd(props.event, props.rsvpdEvents),
+      day: eventDate.getDate(),
+      month: eventDate.getMonth(),
+      year: eventDate.getFullYear(),
+      hours: eventDate.getHours(),
+      minutes: eventDate.getMinutes()
+    };
   }
 
+  isRsvpd = (event, rsvpdEvents) => {
+    for (let e of rsvpdEvents){
+      if (e.id === event.id) {
+        return true
+      }
+    }
+    return false
 
-  // rsvpHandeler = () => {
-  //   this.props.rsvpToEvent(this.props.event);
-  // };
+  };
 
-  eventDateTime = () => new Date(this.props.event.datetime)
+  rsvpHandeler = () => {
+    this.props.rsvpToEvent(this.props.event);
+    this.setState({ rsvpd: true });
+  };
+
+  eventDateTime = () => new Date(this.props.event.datetime);
 
   render() {
     return (
@@ -37,15 +53,11 @@ export default class EventCard extends Component {
         <p>{this.props.event.venue.name}</p>
         <p>{this.props.event.venue.region}</p>
         <p>
-          {this.eventDateTime.getDay()}/{this.eventDateTime.getMonth()}/
-          {this.eventDateTime.getFullYear()}
+          {this.state.day}/{this.state.month}/{this.state.year}
         </p>
         <p>
-          {this.eventDateTime.getHours() <= 12
-            ? this.eventDateTime.getHours()
-            : this.eventDateTime.getHours() - 12}
-          :
-          {this.eventDateTime.getMinutes() === 0 ? "00" : this.eventDateTime.getMinutes()}
+          {this.state.hours}:
+          {this.state.minutes == 0 ? "00" : this.state.minutes}
         </p>
 
         <p>{this.props.event.description}</p>
@@ -58,7 +70,9 @@ export default class EventCard extends Component {
         ))}
         <a href={this.props.event.url}> Check it out</a>
 
-        <button disabled={this.state.rsvpd} onClick={this.rsvpHandeler}>RSVP</button>
+        <button disabled={this.state.rsvpd} onClick={this.rsvpHandeler}>
+          RSVP
+        </button>
 
         <hr />
       </div>

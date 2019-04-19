@@ -19,39 +19,35 @@ class App extends Component {
 
   selectArtist = artist => {
     this.setState({ selectedArtist: artist });
-    this.getUpcomingArtistEvents(artist.name)
+    this.getUpcomingArtistEvents(artist.name);
   };
 
   rsvpToEvent = event => {
-    this.setState({rsvpdEvents: [...this.state.rsvpdEvents, event]})
-  }
+    this.setState({ rsvpdEvents: [...this.state.rsvpdEvents, event] });
+  };
 
   unRsvp = event => {
-    let oldRsvpdEvents = [...this.state.rsvpdEvents]
-    let result = oldRsvpdEvents.filter( e => e.id !== event.id)
-    this.setState({rsvpdEvents: result})
-  }
+    let oldRsvpdEvents = [...this.state.rsvpdEvents];
+    let result = oldRsvpdEvents.filter(e => e.id !== event.id);
+    this.setState({ rsvpdEvents: result });
+  };
 
   isEventRsvpd = event => {
-    for (let e of [...this.state.rsvpdEvents]){
-
-      if (e.id === event.id){
-
-        return true
+    for (let e of [...this.state.rsvpdEvents]) {
+      if (e.id === event.id) {
+        return true;
       }
     }
-    return false
-  }
+    return false;
+  };
 
   getUpcomingArtistEvents = artistName => {
-
     let url = `${API_URL}/events/search?artist_name=${artistName}`;
     fetch(url)
       .then(r => r.json())
-      .catch(error => console.error('Error:', error))
+      .catch(error => console.error("Error:", error))
       // .then(response => console.log('Success:', JSON.stringify(response)));
-      .then( r => this.setState({selectedArtistEvents: r}))
-
+      .then(r => this.setState({ selectedArtistEvents: r }));
   };
 
   searchForArtist = e => {
@@ -64,7 +60,6 @@ class App extends Component {
   };
 
   render() {
-
     return (
       <div className="App">
         <SearchPannel
@@ -72,8 +67,17 @@ class App extends Component {
           searchForArtist={this.searchForArtist}
           searchResults={this.state.searchResults}
         />
-        <RsvpdEvents unRsvp={this.unRsvp} rsvpdEvents={this.state.rsvpdEvents} />
-        <Events isEventRsvpd={this.isEventRsvpd} rsvpToEvent={this.rsvpToEvent} selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
+        <RsvpdEvents
+          unRsvp={this.unRsvp}
+          rsvpdEvents={this.state.rsvpdEvents}
+        />
+        <Events
+          rsvpdEvents={this.state.rsvpdEvents}
+          isEventRsvpd={this.isEventRsvpd}
+          rsvpToEvent={this.rsvpToEvent}
+          selectedArtistEvents={this.state.selectedArtistEvents}
+          selectedArtist={this.state.selectedArtist}
+        />
       </div>
     );
   }
