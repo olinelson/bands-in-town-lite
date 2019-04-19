@@ -22,8 +22,8 @@ class App extends Component {
     this.getUpcomingArtistEvents(artist.name)
   };
 
-  rsvpToEvent = (event) => {
-    // console.log(event)
+  rsvpToEvent = event => {
+
     this.setState({rsvpdEvents: [...this.state.rsvpdEvents, event]})
 
   }
