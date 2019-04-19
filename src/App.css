@@ -7,3 +7,13 @@
 .search-pannel {
   border: 1px solid black;
 }
+
+#leaflet-map { 
+  height: 15rem; ;
+  width: 25rem;
+ 
+}
+
+.event-card {
+  border: 1px solid red;
+}

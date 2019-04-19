@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 //components
@@ -22,6 +21,12 @@ class App extends Component {
     this.setState({ selectedArtist: artist });
     this.getUpcomingArtistEvents(artist.name)
   };
+
+  rsvpToEvent = (event) => {
+    // console.log(event)
+    this.setState({rsvpdEvents: [...this.state.rsvpdEvents, event]})
+
+  }
 
   getUpcomingArtistEvents = artistName => {
 
@@ -49,8 +54,8 @@ class App extends Component {
           searchForArtist={this.searchForArtist}
           searchResults={this.state.searchResults}
         />
-        <RsvpdEvents />
-        <Events selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
+        <RsvpdEvents rsvpdEvents={this.state.rsvpdEvents} />
+        <Events rsvpToEvent={this.rsvpToEvent} selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
       </div>
     );
   }

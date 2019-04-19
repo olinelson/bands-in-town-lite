@@ -1,32 +1,43 @@
 import React, { Fragment } from "react";
 
+// components
+import MapComponent from "./MapComponent";
+
+const uuidv1 = require("uuid/v1");
+
 export default function EventCard(props) {
+
+  const rsvpHandeler = () => {
+    props.rsvpToEvent(props.event);
+
+  };
+
   return (
-    <div>
+    <div className="event-card">
+      <p>{props.event.venue.city}</p>
+      <p>{props.event.venue.country}</p>
+
+      <MapComponent
+        latitude={props.event.venue.latitude}
+        longitude={props.event.venue.longitude}
+      />
+      <p>{props.event.venue.name}</p>
+      <p>{props.event.venue.region}</p>
       <p>{props.event.datetime}</p>
       <p>{props.event.description}</p>
-      <p>{props.event.description}</p>
-      <hr />
+
+
       {props.event.offers.map(ofr => (
-        <Fragment>
-          <p>{ofr.type}</p>
-          <p>{ofr.type}</p>
-          <a href={ofr.url}>LINK</a>
+        <Fragment key={uuidv1()}>
+          <a href={ofr.url}>{ofr.type}</a>
           <p>{ofr.status}</p>
-          <hr />
         </Fragment>
       ))}
       <a href={props.event.url}> Check it out</a>
+
+      <button onClick={rsvpHandeler}>RSVP</button>
+
       <hr />
-      <p>Venue:</p>
-          <p>{props.event.venue.city}</p>
-          <p>{props.event.venue.country}</p>
-          <p>{props.event.venue.latitude}</p>
-          <p>{props.event.venue.longitude}</p>
-          <p>{props.event.venue.name}</p>
-          <p>{props.event.venue.region}</p>
-
-
     </div>
   );
 }
