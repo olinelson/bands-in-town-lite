@@ -6,7 +6,7 @@ import RsvpCard from "./RsvpCard";
 const uuidv1 = require("uuid/v1");
 
 export default function RsvpdEvents(props) {
-  console.log("in rsvpd events", props.rsvpdEvents);
+
   return (
     <div className="rsvpd-events">
       <h4>Rsvpd Events</h4>

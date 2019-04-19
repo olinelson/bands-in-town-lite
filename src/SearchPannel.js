@@ -1,29 +1,25 @@
-import React from 'react'
+import React from "react";
 
-import ArtistCard from "./ArtistCard"
+import ArtistCard from "./ArtistCard";
+
+import { DebounceInput } from "react-debounce-input";
 
 export default function SearchPannel(props) {
 
-  const artistFormSubmitHandler = (e) => {
-    e.preventDefault()
-    props.searchForArtist(e)
-  }
-
 
   return (
-
     <div className="search-pannel">
-      <form onSubmit={artistFormSubmitHandler}>
-          <label>Search For Artist</label>
-          <input></input>
-          <button>Submit</button>
-      </form>
+      <DebounceInput
+        minLength={2}
+        debounceTimeout={300}
+        onChange={event => props.searchForArtist(event)}
+      />
       <h4>Search Pannel</h4>
       <div className="search-results">
-
-     {props.searchResults.map( r => <ArtistCard selectArtist={props.selectArtist} key={r.id} artist={r}/>)}
-    
+        {props.searchResults.map(r => (
+          <ArtistCard selectArtist={props.selectArtist} key={r.id} artist={r} />
+        ))}
       </div>
     </div>
-  )
+  );
 }

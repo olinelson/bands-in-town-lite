@@ -1,43 +1,67 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 
 // components
 import MapComponent from "./MapComponent";
 
 const uuidv1 = require("uuid/v1");
 
-export default function EventCard(props) {
-  const rsvpHandeler = () => {
-    props.rsvpToEvent(props.event);
-  };
+export default class EventCard extends Component {
 
-  return (
-    <div className="event-card">
-      <p>{props.event.venue.city}</p>
-      <p>{props.event.venue.country}</p>
+  constructor (props){
+    super()
+    this.state = {
+      rsvpd: false
+    }
+  }
 
-      {props.event.venue.latitude ? (
-        <MapComponent
-          latitude={props.event.venue.latitude}
-          longitude={props.event.venue.longitude}
-        />
-      ) : null}
 
-      <p>{props.event.venue.name}</p>
-      <p>{props.event.venue.region}</p>
-      <p>{props.event.datetime}</p>
-      <p>{props.event.description}</p>
+  // rsvpHandeler = () => {
+  //   this.props.rsvpToEvent(this.props.event);
+  // };
 
-      {props.event.offers.map(ofr => (
-        <Fragment key={uuidv1()}>
-          <a href={ofr.url}>{ofr.type}</a>
-          <p>{ofr.status}</p>
-        </Fragment>
-      ))}
-      <a href={props.event.url}> Check it out</a>
+  eventDateTime = () => new Date(this.props.event.datetime)
 
-      <button onClick={rsvpHandeler}>RSVP</button>
+  render() {
+    return (
+      <div className="event-card">
+        <p>{this.props.event.venue.city}</p>
+        <p>{this.props.event.venue.country}</p>
 
-      <hr />
-    </div>
-  );
+        {this.props.event.venue.latitude ? (
+          <MapComponent
+            latitude={this.props.event.venue.latitude}
+            longitude={this.props.event.venue.longitude}
+          />
+        ) : null}
+
+        <p>{this.props.event.venue.name}</p>
+        <p>{this.props.event.venue.region}</p>
+        <p>
+          {this.eventDateTime.getDay()}/{this.eventDateTime.getMonth()}/
+          {this.eventDateTime.getFullYear()}
+        </p>
+        <p>
+          {this.eventDateTime.getHours() <= 12
+            ? this.eventDateTime.getHours()
+            : this.eventDateTime.getHours() - 12}
+          :
+          {this.eventDateTime.getMinutes() === 0 ? "00" : this.eventDateTime.getMinutes()}
+        </p>
+
+        <p>{this.props.event.description}</p>
+
+        {this.props.event.offers.map(ofr => (
+          <Fragment key={uuidv1()}>
+            <a href={ofr.url}>{ofr.type}</a>
+            <p>{ofr.status}</p>
+          </Fragment>
+        ))}
+        <a href={this.props.event.url}> Check it out</a>
+
+        <button disabled={this.state.rsvpd} onClick={this.rsvpHandeler}>RSVP</button>
+
+        <hr />
+      </div>
+    );
+  }
 }

@@ -32,6 +32,17 @@ class App extends Component {
     this.setState({rsvpdEvents: result})
   }
 
+  isEventRsvpd = event => {
+    for (let e of [...this.state.rsvpdEvents]){
+
+      if (e.id === event.id){
+
+        return true
+      }
+    }
+    return false
+  }
+
   getUpcomingArtistEvents = artistName => {
 
     let url = `${API_URL}/events/search?artist_name=${artistName}`;
@@ -40,11 +51,11 @@ class App extends Component {
       .catch(error => console.error('Error:', error))
       // .then(response => console.log('Success:', JSON.stringify(response)));
       .then( r => this.setState({selectedArtistEvents: r}))
-      .then( r => console.log(this.state.selectedArtistEvents))
+
   };
 
   searchForArtist = e => {
-    let query = e.target[0].value;
+    let query = e.target.value;
     let url = `${API_URL}/artists/search?artist_name=${query}`;
 
     fetch(url)
@@ -62,7 +73,7 @@ class App extends Component {
           searchResults={this.state.searchResults}
         />
         <RsvpdEvents unRsvp={this.unRsvp} rsvpdEvents={this.state.rsvpdEvents} />
-        <Events rsvpToEvent={this.rsvpToEvent} selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
+        <Events isEventRsvpd={this.isEventRsvpd} rsvpToEvent={this.rsvpToEvent} selectedArtistEvents={this.state.selectedArtistEvents} selectedArtist={this.state.selectedArtist} />
       </div>
     );
   }
