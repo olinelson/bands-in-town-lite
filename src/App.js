@@ -37,7 +37,10 @@ class App extends Component {
     let url = `${API_URL}/events/search?artist_name=${artistName}`;
     fetch(url)
       .then(r => r.json())
+      .catch(error => console.error('Error:', error))
+      // .then(response => console.log('Success:', JSON.stringify(response)));
       .then( r => this.setState({selectedArtistEvents: r}))
+      .then( r => console.log(this.state.selectedArtistEvents))
   };
 
   searchForArtist = e => {

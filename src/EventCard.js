@@ -6,10 +6,8 @@ import MapComponent from "./MapComponent";
 const uuidv1 = require("uuid/v1");
 
 export default function EventCard(props) {
-
   const rsvpHandeler = () => {
     props.rsvpToEvent(props.event);
-
   };
 
   return (
@@ -17,15 +15,17 @@ export default function EventCard(props) {
       <p>{props.event.venue.city}</p>
       <p>{props.event.venue.country}</p>
 
-      <MapComponent
-        latitude={props.event.venue.latitude}
-        longitude={props.event.venue.longitude}
-      />
+      {props.event.venue.latitude ? (
+        <MapComponent
+          latitude={props.event.venue.latitude}
+          longitude={props.event.venue.longitude}
+        />
+      ) : null}
+
       <p>{props.event.venue.name}</p>
       <p>{props.event.venue.region}</p>
       <p>{props.event.datetime}</p>
       <p>{props.event.description}</p>
-
 
       {props.event.offers.map(ofr => (
         <Fragment key={uuidv1()}>

@@ -1,8 +1,7 @@
 import React from "react";
-// import ReactLeaflet from "reactLeaflet";
-// const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
+
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
-// import Map as { LeafletMap, TileLayer, Marker, Popup } from "react-leaflet"
+
 
 const MapComponent = props => {
 
