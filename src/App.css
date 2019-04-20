@@ -59,20 +59,31 @@ input {
   background-color: white;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  align-items: center;
   height: 2.5rem;
+
 }
 
 .rsvpd-events-pannel {
  grid-area: rsvp;
  display: grid;
+ grid-template-rows: 3rem auto;
  height: 100%;
+ width: 95%;
+ justify-self: center;
  overflow-x: scroll;
 }
 .rsvpd-events {
   height: 100%;
+  width: 100%;
+  justify-self: center;
   overflow-x: scroll; 
   display: grid;
+  grid-template-rows: 2.5rem;
   grid-gap: 1rem;
+  
+
+
 }
 
 
