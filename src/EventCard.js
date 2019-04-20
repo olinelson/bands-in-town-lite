@@ -43,13 +43,6 @@ export default class EventCard extends Component {
         <p>{this.props.event.venue.city}</p>
         <p>{this.props.event.venue.country}</p>
 
-        {this.props.event.venue.latitude ? (
-          <MapComponent
-            latitude={this.props.event.venue.latitude}
-            longitude={this.props.event.venue.longitude}
-          />
-        ) : null}
-
         <p>{this.props.event.venue.name}</p>
         <p>{this.props.event.venue.region}</p>
         <p>
@@ -73,8 +66,6 @@ export default class EventCard extends Component {
         <button disabled={this.state.rsvpd} onClick={this.rsvpHandeler}>
           RSVP
         </button>
-
-        <hr />
       </div>
     );
   }
