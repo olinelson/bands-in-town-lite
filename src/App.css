@@ -12,6 +12,8 @@
 
 }
 
+
+
 button {
 background-color: white;
 border: 1px solid #00B4B3;
@@ -76,7 +78,6 @@ input {
   justify-self: flex-end;
 }
 
-
 .event-card {
   background-color: white;
   display: grid;
@@ -85,15 +86,21 @@ input {
 .rsvp-card {
   background-color: white;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 4fr repeat(5, 1fr);
   align-items: center;
   height: 2.5rem;
+  margin-top: 1rem;
+}
 
+.rsvp-card button {
+padding: .1rem;
+width: 5rem;
 }
 
 .rsvpd-events-pannel {
  grid-area: rsvp;
- display: grid;
+ display: flex;
+ flex-direction: column;
  grid-template-rows: 3rem auto;
  height: 100%;
  width: 100%;
@@ -106,9 +113,8 @@ input {
   width: 100%;
   justify-self: center;
   overflow-x: scroll; 
-  display: grid;
-  grid-template-rows: 2.5rem;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -159,3 +165,7 @@ a {
   height: auto;
 }
 
+
+.button-appears-as-link {
+  border: none;
+}

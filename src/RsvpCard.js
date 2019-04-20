@@ -25,17 +25,17 @@ cancelHandler = () => {
 
       <p>{this.props.event.datetime}</p>
 
-      <button onClick={() => this.setState({mapShown: true})}>map</button>
+      <button className="button-appears-as-link" onClick={() => this.setState({mapShown: true})}>Map</button>
 
       {this.props.event.offers.map(ofr => (
         <Fragment key={uuidv1()}>
           <a href={ofr.url}>{ofr.type}</a>
-          <p>{ofr.status}</p>
+          {/* <p>{ofr.status}</p> */}
         </Fragment>
       ))}
       <a href={this.props.event.url}>More Info</a>
 
-      <button onClick={this.cancelHandler}>cancel</button>
+      <button  onClick={this.cancelHandler}>Cancel</button>
 
       {this.props.event.venue.latitude && this.state.mapShown === true ? (
         <MapComponent
