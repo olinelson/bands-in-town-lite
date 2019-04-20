@@ -25,10 +25,6 @@ export default function RsvpCard(props) {
       <a href={props.event.url}> Check it out</a>
 
       <button onClick={cancelHandler}>cancel</button>
-
-
-
-      <hr />
     </div>
   );
 }

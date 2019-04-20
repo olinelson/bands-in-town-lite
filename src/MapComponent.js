@@ -12,9 +12,9 @@ const MapComponent = props => {
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
       />
       <Marker position={position}>
-        {/* <Popup>
+        <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup> */}
+          </Popup>
       </Marker>
     </LeafletMap>
   );

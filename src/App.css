@@ -1,7 +1,12 @@
 .App {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "search events"
+  "rsvp rsvp"
+  ;
   height: 100vh;
+  grid-template-rows: 50vh;
   background-color: white;
   background-color: #EDEDED;
 
@@ -16,12 +21,29 @@ padding: .25rem;
 font-weight: bold;
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 input {
   border-bottom: 1px solid white;
 }
 
 .search-pannel {
-  border: 1px solid black;
+  grid-area: search;
+}
+
+
+.events-pannel {
+  grid-area: events;
+  display: grid;
+}
+.events {
+  display: grid;
+  grid-gap: 1rem;
+  background-color: rgba(255, 255, 255, 0);
+  overflow-x: scroll;
+  height: 100%;
 }
 
 #leaflet-map { 
@@ -30,13 +52,32 @@ input {
 }
 
 .event-card {
-
+  background-color: white;
 }
 
-.events {
-  border: 1px solid red;
-  overflow-x: scroll;
+.rsvp-card {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 2.5rem;
 }
+
+.rsvpd-events-pannel {
+ grid-area: rsvp;
+ display: grid;
+ height: 100%;
+ overflow-x: scroll;
+}
+.rsvpd-events {
+  height: 100%;
+  overflow-x: scroll; 
+  display: grid;
+  grid-gap: 1rem;
+}
+
+
+
+
 
 h4 {
   font-size: 2rem;
@@ -48,10 +89,10 @@ a {
 
 .search-bar {
   width: 100%;
-  border: 1px solid red;
   height: 4rem;
   background-color: #FFFFFF;
   display: grid;
+  z-index: 2;
 }
 .search-bar input {
   border: 1px solid #CDCDCD;
