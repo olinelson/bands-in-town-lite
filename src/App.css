@@ -10,11 +10,7 @@
   grid-template-rows: 10vh 50vh 40vh;
   background-color: white;
   background-color: #EDEDED;
-
 }
-
-
-
 button {
 background-color: white;
 border: 1px solid #00B4B3;
@@ -34,13 +30,13 @@ input {
 
 .search-pannel {
   grid-area: search;
-  background-color: purple;
+
 }
 
 
 .events-pannel {
   grid-area: events;
-  background-color: yellow;
+
   width: 100%;
   height: 100%;
 
@@ -158,7 +154,8 @@ a {
   height: 100%;
 }
 .artist-card img {
- 
+ height: auto;
+ width: 100%;
 
 
 }
