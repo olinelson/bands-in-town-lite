@@ -1,16 +1,20 @@
 .App {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas:
   "nav nav"
   "search events"
   "rsvp rsvp"
   ;
   height: 100vh;
-  grid-template-rows: 10vh 50vh 40vh;
+  grid-template-rows: 8vh 50vh 40vh;
   background-color: white;
   background-color: #EDEDED;
+  grid-row-gap: 1vh;
 }
+
+
+
 button {
 background-color: white;
 border: 1px solid #00B4B3;
@@ -30,24 +34,29 @@ input {
 
 .search-pannel {
   grid-area: search;
+  display: grid;
+  justify-items: right;
 
 }
 
 
 .events-pannel {
   grid-area: events;
-
   width: 100%;
   height: 100%;
+  display: grid;
+
 
   
 }
 .events {
-width: 100%;
+width: 95%;
 height: 100%;
 display: flex;
 flex-direction: column;
 overflow: scroll;
+justify-self: center;
+
   
 }
 
@@ -60,17 +69,14 @@ overflow: scroll;
 
 .map-fullscreen-container{
   position: fixed;
-  margin-top: -9.1rem;
-  padding: 0;
+  top: 0;
+
   z-index: 10;
-  height: 100vh;
-  width: 100vw;
-  justify-self: center;
+
+
+
   background-color: rgba(62, 62, 62, 0.653);
-  display: grid;
-  grid-gap: 1rem;
-  justify-content: center;
-  align-content: center;
+
 }
 
 .map-fullscreen-container button {
@@ -82,14 +88,8 @@ overflow: scroll;
   display: grid;
 }
 
-.rsvp-card {
-  background-color: white;
-  display: grid;
-  grid-template-columns: 4fr repeat(5, 1fr);
-  align-items: center;
-  height: 2.5rem;
-  margin-top: 1rem;
-}
+
+
 
 .rsvp-card button {
 padding: .1rem;
@@ -98,7 +98,27 @@ width: 5rem;
 
 .rsvpd-events-pannel {
  grid-area: rsvp;
- background-color: green;
+ display: grid;
+ grid-template-rows: 2rem;
+ width: 100%;
+ height: 100%;
+}
+
+.rsvpd-events {
+  width: 98%;
+  justify-self: center;
+  display: grid;
+  grid-gap: 1rem;
+  
+}
+.rsvp-card {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 4fr repeat(5, 1fr);
+  padding: .5rem;
+
+
+
 }
 
 
@@ -117,7 +137,8 @@ a {
 .search-bar {
   grid-area: nav;
   width: 100%;
-  border: 1px solid red;
+background-color: white;
+  display: grid;
  
 }
 .search-bar input {
@@ -132,8 +153,8 @@ a {
 .search-pannel {
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: center;
-  justify-items: center;
+
+
   width: 100%;
   height: 100%;
 }
@@ -141,21 +162,37 @@ a {
 .search-results {
   display:grid;
   width: 95%;
-  height: 95%;
+  height: 100%;
 
 
 }
 
 .artist-card {
-  background-color: white;
+
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  justify-self: center;
+  max-width: 24rem;
 }
+
+.artist-card-body {
+  width: 100%;
+  height: 100%;
+  max-width: 20rem;
+
+
+  
+
+  
+}
+
 .artist-card img {
- height: auto;
- width: 100%;
+  height: 100%;
+  width: auto;
+
+
+
 
 
 }
@@ -163,4 +200,42 @@ a {
 
 .button-appears-as-link {
   border: none;
+}
+
+@media screen and (max-width: 45rem){
+    .App {
+      grid-template-areas:
+  "nav nav"
+  "search search"
+  "events events"
+  "rsvp rsvp"
+  ;
+  height: auto;
+
+  grid-gap: 1rem;
+    }
+    .artist-card {
+
+      width: 100%;
+      justify-self: center;
+    }
+    .search-results {
+
+      justify-self: center;
+    }
+
+    .rsvpd-events{
+      height: auto;
+      border: 1px solid red;
+    }
+
+
+    .rsvp-card{
+      grid-template-columns: 1fr ;
+
+
+
+    }
+
+    
 }

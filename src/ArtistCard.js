@@ -5,13 +5,19 @@ export default function ArtistCard(props) {
     <div
       className="artist-card"
       onClick={() => props.selectArtist(props.artist)}
+      // style={{
+      //   backgroundImage:
+      //     `url(${props.artist.image_url})`
+      // }}
     >
-    {console.log(props.artist)}
+      {console.log(props.artist)}
       <img alt={props.artist.name} src={props.artist.thumb_url} />
-      <h4>{props.artist.name}</h4>
-      <p>trackers: {props.artist.tracker_count}</p>
-      <p>up comming events: {props.artist.upcoming_event_count}</p>
-      <p>{props.artist.description}</p>
+      <div className="artist-card-body">
+        <h4>{props.artist.name}</h4>
+        <p>trackers: {props.artist.tracker_count}</p>
+        <p>up comming events: {props.artist.upcoming_event_count}</p>
+        <p>{props.artist.description}</p>
+      </div>
     </div>
   );
 }
