@@ -61,26 +61,41 @@ justify-self: center;
 }
 
 #leaflet-map { 
+
+  height: 20rem ;
+  width: 30rem;
   max-width: 95vw;
-  max-height: 95vh;
-  height: 25rem ;
-  width: 35rem;
+
 }
 
 .map-fullscreen-container{
   position: fixed;
   top: 0;
-
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 10;
-
-
-
   background-color: rgba(62, 62, 62, 0.653);
+  justify-self: center;
+  display: grid;
+
+}
+.map-inner-container {
+  display: grid;
+  justify-self: center;
+  justify-content: center;
+  align-self: center;
+  max-width: 95vw;
+  width: 100%;
+
+
 
 }
 
-.map-fullscreen-container button {
+.map-inner-container button {
   justify-self: flex-end;
+  height: 3rem;
+
 }
 
 .event-card {
