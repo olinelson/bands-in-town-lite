@@ -6,6 +6,8 @@ import SearchPannel from "./SearchPannel";
 import RsvpdEvents from "./RsvpdEvents";
 import Events from "./Events";
 
+import { DebounceInput } from "react-debounce-input";
+
 //dynamic api url
 import API_URL from "./config";
 
@@ -68,6 +70,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="search-bar">
+          <DebounceInput
+            minLength={2}
+            debounceTimeout={300}
+            onChange={event => this.searchForArtist(event)}
+          />
+        </div>
         <SearchPannel
           selectArtist={this.selectArtist}
           searchForArtist={this.searchForArtist}

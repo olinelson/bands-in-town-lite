@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
+  "nav nav"
   "search events"
   "rsvp rsvp"
   ;
   height: 100vh;
-  grid-template-rows: 50vh;
+  grid-template-rows: 10vh 50vh 40vh;
   background-color: white;
   background-color: #EDEDED;
 
@@ -33,22 +34,24 @@ input {
 
 .search-pannel {
   grid-area: search;
+  background-color: purple;
 }
 
 
 .events-pannel {
   grid-area: events;
-  display: grid;
+  background-color: yellow;
+  width: 100%;
+  height: 100%;
+
   
 }
 .events {
-  display: grid;
-  grid-gap: 1rem;
-  background-color: rgba(255, 255, 255, 0);
-  overflow-x: scroll;
-  height: 100%;
-  padding-right: 1rem;
-
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+overflow: scroll;
   
 }
 
@@ -99,23 +102,9 @@ width: 5rem;
 
 .rsvpd-events-pannel {
  grid-area: rsvp;
- display: flex;
- flex-direction: column;
- grid-template-rows: 3rem auto;
- height: 100%;
- width: 100%;
- justify-self: center;
- overflow-x: scroll;
- padding: 0 1rem;
+ background-color: green;
 }
-.rsvpd-events {
-  height: 100%;
-  width: 100%;
-  justify-self: center;
-  overflow-x: scroll; 
-  display: flex;
-  flex-direction: column;
-}
+
 
 
 
@@ -130,11 +119,10 @@ a {
 }
 
 .search-bar {
+  grid-area: nav;
   width: 100%;
-  height: 4rem;
-  background-color: #FFFFFF;
-  display: grid;
-  z-index: 2;
+  border: 1px solid red;
+ 
 }
 .search-bar input {
   border: 1px solid #CDCDCD;
@@ -150,19 +138,24 @@ a {
   grid-template-columns: 1fr;
   justify-content: center;
   justify-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .search-results {
   display:grid;
+  width: 95%;
+  height: 95%;
+
+
 }
 
 .artist-card {
-
-  width: 100%;
-  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 .artist-card img {
  
