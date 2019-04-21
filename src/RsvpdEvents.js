@@ -16,9 +16,6 @@ export default function RsvpdEvents(props) {
         .map(e => (
           <RsvpCard unRsvp={props.unRsvp} key={uuidv1()} event={e} />
         ))}
-      {/* {props.rsvpdEvents.map(e => (
-        <RsvpCard unRsvp={props.unRsvp} key={uuidv1()} event={e} />
-      ))} */}
       </div>
     </div>
   );

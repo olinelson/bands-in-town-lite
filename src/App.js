@@ -29,7 +29,13 @@ class App extends Component {
   unRsvp = event => {
     let oldRsvpdEvents = [...this.state.rsvpdEvents];
     let result = oldRsvpdEvents.filter(e => e.id !== event.id);
-    this.setState({ rsvpdEvents: result });
+    this.setState(
+      {
+        rsvpdEvents: result,
+        selectedArtistEvents: []
+      },
+      this.getUpcomingArtistEvents(this.state.selectedArtist.name)
+    );
   };
 
   isEventRsvpd = event => {

@@ -53,19 +53,19 @@ input {
 }
 
 #leaflet-map { 
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 95vw;
+  max-height: 95vh;
   height: 25rem ;
   width: 35rem;
 }
 
 .map-fullscreen-container{
   position: fixed;
-  margin-top: -8.5rem;
+  margin-top: -9.1rem;
   padding: 0;
   z-index: 10;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   justify-self: center;
   background-color: rgba(62, 62, 62, 0.653);
   display: grid;
@@ -152,17 +152,22 @@ a {
   justify-items: center;
 }
 
+.search-results {
+  display:grid;
+}
+
 .artist-card {
 
-  width: 90%;
+  width: 100%;
+  height: 100%;
   background-color: white;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 .artist-card img {
-  width: 100%;
-  height: auto;
+ 
+
+
 }
 
 
