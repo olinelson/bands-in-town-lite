@@ -22,8 +22,8 @@ export default function Events(props) {
     <div className="events-pannel">
       {/* <h4>Events for {props.selectedArtist.name}</h4> */}
       <div className="events">
-        {props.selectedArtistEvents.length > 0 ? mapEvents() :
-          <small>click artist image to see events</small>
+        {props.selectedArtistEvents ? mapEvents() :
+            null
           }
       </div>
     </div>

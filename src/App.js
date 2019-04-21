@@ -64,10 +64,17 @@ class App extends Component {
 
     fetch(url)
       .then(r => r.json())
-      .then(r => this.setState({ searchResults: [r] }));
+      .then(r => this.setState({ 
+        searchResults: [r], 
+        selectedArtist: r
+      },this.getUpcomingArtistEvents(r.name)
+      ))
+
+
   };
 
   render() {
+    console.log('in app', this.state)
     return (
       <div className="App">
         <div className="search-bar">
