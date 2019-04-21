@@ -11,7 +11,7 @@ export default function ArtistCard(props) {
       // }}
     >
       {console.log(props.artist)}
-      <img alt={props.artist.name} src={props.artist.thumb_url} />
+      <img alt={props.artist.name} src={props.artist.image_url} />
       <div className="artist-card-body">
         <h4>{props.artist.name}</h4>
         <p>trackers: {props.artist.tracker_count}</p>

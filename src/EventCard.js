@@ -4,6 +4,7 @@ import React, { Fragment, Component } from "react";
 import MapComponent from "./MapComponent";
 
 const uuidv1 = require("uuid/v1");
+const moment = require("moment");
 
 export default class EventCard extends Component {
   constructor(props) {
@@ -21,13 +22,12 @@ export default class EventCard extends Component {
   }
 
   isRsvpd = (event, rsvpdEvents) => {
-    for (let e of rsvpdEvents){
+    for (let e of rsvpdEvents) {
       if (e.id === event.id) {
-        return true
+        return true;
       }
     }
-    return false
-
+    return false;
   };
 
   rsvpHandeler = () => {
@@ -38,31 +38,35 @@ export default class EventCard extends Component {
   eventDateTime = () => new Date(this.props.event.datetime);
 
   render() {
+
     return (
       <div className="event-card">
-        <p>{this.props.event.venue.city}</p>
-        <p>{this.props.event.venue.country}</p>
-
-        <p>{this.props.event.venue.name}</p>
-        <p>{this.props.event.venue.region}</p>
-        <p>
-          {this.state.day}/{this.state.month}/{this.state.year}
+        <p className="event-date">
+          {moment(this.props.event.datetime).format("LL")}
         </p>
-        <p>
+        <h4>
+          {this.props.event.venue.city}, {this.props.event.venue.country}
+        </h4>
+
+        <h5>{moment(this.props.event.datetime).format("LT")}</h5>
+        <p>{this.props.event.venue.region}</p>
+
+        {/* <p>
           {this.state.hours}:
           {this.state.minutes == 0 ? "00" : this.state.minutes}
-        </p>
+        </p> */}
 
         <p>{this.props.event.description}</p>
 
-        {this.props.event.offers.map(ofr => (
-          <Fragment key={uuidv1()}>
-            <a href={ofr.url}>{ofr.type}</a>
-            <p>{ofr.status}</p>
-          </Fragment>
-        ))}
-        <a href={this.props.event.url}> Check it out</a>
-
+        <div className="event-links">
+          {this.props.event.offers.map(ofr => (
+            <Fragment key={uuidv1()}>
+              <a href={ofr.url}>{ofr.type}</a>
+              {/* <p>{ofr.status}</p> */}
+            </Fragment>
+          ))}
+          <a href={this.props.event.url}>More Info</a>
+        </div>
         <button disabled={this.state.rsvpd} onClick={this.rsvpHandeler}>
           RSVP
         </button>

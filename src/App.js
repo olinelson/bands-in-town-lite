@@ -74,7 +74,7 @@ class App extends Component {
   };
 
   render() {
-    console.log('in app', this.state)
+
     return (
       <div className="App">
         <div className="search-bar">
