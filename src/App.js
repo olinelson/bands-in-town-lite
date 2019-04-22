@@ -1,15 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 
 //components
 import SearchPannel from "./SearchPannel";
 import RsvpdEvents from "./RsvpdEvents";
 import Events from "./Events";
+import SearchBarPannel from "./SearchBarPannel"
+import WelcomePage from "./WelcomePage"
 
-import { DebounceInput } from "react-debounce-input";
+
 
 //dynamic api url
 import API_URL from "./config";
+
+
 
 class App extends Component {
   state = {
@@ -64,42 +68,46 @@ class App extends Component {
 
     fetch(url)
       .then(r => r.json())
-      .then(r => this.setState({ 
-        searchResults: [r], 
-        selectedArtist: r
-      },this.getUpcomingArtistEvents(r.name)
-      ))
-
-
+      .then(r =>
+        this.setState(
+          {
+            searchResults: [r],
+            selectedArtist: r
+          },
+          this.getUpcomingArtistEvents(r.name)
+        )
+      );
   };
 
   render() {
-
     return (
       <div className="App">
-        <div className="search-bar">
-          <DebounceInput
-            minLength={2}
-            debounceTimeout={300}
-            onChange={event => this.searchForArtist(event)}
-          />
-        </div>
-        <SearchPannel
-          selectArtist={this.selectArtist}
-          searchForArtist={this.searchForArtist}
-          searchResults={this.state.searchResults}
-        />
-        <RsvpdEvents
-          unRsvp={this.unRsvp}
-          rsvpdEvents={this.state.rsvpdEvents}
-        />
-        <Events
-          rsvpdEvents={this.state.rsvpdEvents}
-          isEventRsvpd={this.isEventRsvpd}
-          rsvpToEvent={this.rsvpToEvent}
-          selectedArtistEvents={this.state.selectedArtistEvents}
-          selectedArtist={this.state.selectedArtist}
-        />
+
+        <SearchBarPannel searchForArtist={this.searchForArtist}/>
+
+        {this.state.rsvpdEvents.length === 0 &&
+        this.state.searchResults.length < 1 ? (
+          <WelcomePage />
+        ) : (
+          <Fragment>
+            <SearchPannel
+              selectArtist={this.selectArtist}
+              searchForArtist={this.searchForArtist}
+              searchResults={this.state.searchResults}
+            />
+            <RsvpdEvents
+              unRsvp={this.unRsvp}
+              rsvpdEvents={this.state.rsvpdEvents}
+            />
+            <Events
+              rsvpdEvents={this.state.rsvpdEvents}
+              isEventRsvpd={this.isEventRsvpd}
+              rsvpToEvent={this.rsvpToEvent}
+              selectedArtistEvents={this.state.selectedArtistEvents}
+              selectedArtist={this.state.selectedArtist}
+            />
+          </Fragment>
+        )}
       </div>
     );
   }

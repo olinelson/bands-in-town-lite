@@ -5,10 +5,6 @@ export default function ArtistCard(props) {
     <div
       className="artist-card"
       onClick={() => props.selectArtist(props.artist)}
-      // style={{
-      //   backgroundImage:
-      //     `url(${props.artist.image_url})`
-      // }}
     >
       {console.log(props.artist)}
       <img alt={props.artist.name} src={props.artist.image_url} />

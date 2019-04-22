@@ -9,15 +9,9 @@ const moment = require("moment");
 export default class EventCard extends Component {
   constructor(props) {
     super();
-
-    let eventDate = new Date(props.event.datetime);
+    
     this.state = {
       rsvpd: this.isRsvpd(props.event, props.rsvpdEvents),
-      day: eventDate.getDate(),
-      month: eventDate.getMonth(),
-      year: eventDate.getFullYear(),
-      hours: eventDate.getHours(),
-      minutes: eventDate.getMinutes()
     };
   }
 
@@ -51,10 +45,7 @@ export default class EventCard extends Component {
         <h5>{moment(this.props.event.datetime).format("LT")}</h5>
         <p>{this.props.event.venue.region}</p>
 
-        {/* <p>
-          {this.state.hours}:
-          {this.state.minutes == 0 ? "00" : this.state.minutes}
-        </p> */}
+
 
         <p>{this.props.event.description}</p>
 
