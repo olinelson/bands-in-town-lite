@@ -80,6 +80,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(API_URL)
     return (
       <div className="App">
 
