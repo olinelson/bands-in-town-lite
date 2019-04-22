@@ -58,7 +58,6 @@ class App extends Component {
     fetch(url)
       .then(r => r.json())
       .catch(error => console.error("Error:", error))
-      // .then(response => console.log('Success:', JSON.stringify(response)));
       .then(r => this.setState({ selectedArtistEvents: r }));
   };
 
@@ -80,9 +79,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(process.env.NODE_ENV)
-    console.log(API_URL)
-
     return (
       <div className="App">
 

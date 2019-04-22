@@ -6,7 +6,7 @@ export default function ArtistCard(props) {
       className="artist-card"
       onClick={() => props.selectArtist(props.artist)}
     >
-      {console.log(props.artist)}
+
       <img alt={props.artist.name} src={props.artist.image_url} />
       <div className="artist-card-body">
         <h4>{props.artist.name}</h4>
